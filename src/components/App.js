@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import Header from "./Header";
 import Profile from "./Profile";
+// import the provider
+import { UserProvider } from "../context/user";
 
-function App() {
-  const [theme, setTheme] = useState("dark");
+function UserProvider({ children }) {
   const [user, setUser] = useState(null);
   return (
-    <main className={theme}>
-      <Header theme={theme} setTheme={setTheme} user={user} setUser={setUser} />
-      <Profile theme={theme} user={user} />
-    </main>
+    <UserContext.Provider value={{ user, setUser }}>
+      {children}
+    </UserContext.Provider>
   );
 }
 
